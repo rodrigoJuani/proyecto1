@@ -9,7 +9,8 @@ const Header=()=>{
                 <button className="flex items-center gap-2 font-medium py-1 px-3 sm:py-3 sm:px-6 border border-solid border-black shadow-[-7px_7px_0px_#000000]">Get started<Image src={assets.arrow}/></button>
             </div>
             <div className="text-center my-8">
-              <h1 className="tect-3x1 sm:text-5xl font-medium">Lastest Blogs</h1>
+              <h1 className="text-3x1 sm:text-5xl font-medium">Latest Blogs</h1>
+              <p className="mt-10 max-w-[740px] m-auto text-xs sm:text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptate eum veritatis, obcaecati reprehenderit odio, minima totam ex exercitationem officia quidem excepturi aut, nihil illum doloribus porro eveniet facilis iste.</p>
             </div>
         </div>
     )
