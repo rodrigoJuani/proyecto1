@@ -13,6 +13,9 @@ const Header=()=>{
               <p className="mt-10 max-w-[740px] m-auto text-xs sm:text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptate eum veritatis, obcaecati reprehenderit odio, minima totam ex exercitationem officia quidem excepturi aut, nihil illum doloribus porro eveniet facilis iste.</p>
               <form className="flex justify-between max-w-[500px] scale-75 sm:scale-100 mx-auto mt-10 border border-black" action="">
                  <input type="email" placeholder="Enter your email" className="pl-4 outline-none"/>
+                 <button className="border-1 border-black py-4 px-4 sm:px-8 active:bg-gray-600 active:text-white">
+                    Subscribe
+                 </button>
               </form>
             </div>
         </div>
