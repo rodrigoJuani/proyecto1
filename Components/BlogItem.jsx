@@ -1,4 +1,5 @@
 import { blog_data } from "@/Assets/assets";
+import Image from "next/image";
 import React from "react";
 const BlogItem=()=>{
     return(
@@ -7,5 +8,4 @@ const BlogItem=()=>{
         </div>
     )
 }
-
 export default BlogItem
