@@ -12,7 +12,7 @@ const BlogList=()=>{
             <button onClick={()=>setMenu("Lifestyle")} className={menu==="Lifestyle"? "bg-black text-white py-1 px4 rounded-sm":""}>lifestyle</button>
         </div>
         <div className="flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24">
-          {blog_data.map((item,index)=>{
+          {blog_data.filter((item)=>menu==="ALL"?true:item.category===menu).map((item,index)=>{
             return <BlogItem key={index} image={item.image} title={item.title} description="item.description" category={item.category}/>
           })}
         </div>
