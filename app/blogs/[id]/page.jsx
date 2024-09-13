@@ -50,7 +50,14 @@ const page=({params})=>{
         
          <h3 className="my-5 text-[18px] font-semibold">Conclusion:</h3>
          <p className="my-3 ">Manage your lifestylr is a journey that requires commitment and self-awareness.By Following this step-by-</p>
-
+        <div className="my-24">
+            <p className="text-black font font-semibold my-4">Share this article on social media</p>
+            <div className="flex">
+              <Image src={assets.facebook_icon} width={50} alt=""/>
+              <Image src={assets.twitter_icon} width={50} alt=""/>
+              <Image src={assets.googleplus_icon} width={50} alt=""/>
+            </div>
+        </div>
         </div>
         </>:<></>
     )
