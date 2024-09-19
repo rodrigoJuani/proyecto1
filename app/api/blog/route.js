@@ -1,6 +1,7 @@
 import { ConnectDB } from "@/lib/config/db"
 const{ NextResponse }=require("next/server");
 import{writeFile} from 'fs/promises'
+import { title } from "process";
 const  LoadDB=async()=>{
     await ConnectDB();
 }
@@ -18,6 +19,14 @@ export async function POST(request) {
     const path=`./public/${timestamp}_${image.name}`;
     await writeFile(path,buffer);
     const imgUrl=`/${timestamp}_${image.name}`;
-    console.log(imgUrl);
+    
+    const blogData={
+        title:`${formData.get('title')}`,
+        description:`${formData.get('description')}`,
+        categoty:`${formData.get('category')}`,
+        author:`${formData.get('author')}`,
+        image:`${imgUrl}`,
+        authorImg:`${formData.get('authorImg')}`
+    }
     return NextResponse.json({imgUrl})
 }
