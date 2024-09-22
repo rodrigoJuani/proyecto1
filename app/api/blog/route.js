@@ -9,7 +9,7 @@ const  LoadDB=async()=>{
 LoadDB();
 export async function GET(request) {
     return NextResponse.json({msg:"API working"})
-}
+} 
 export async function POST(request) {
     const formData=await request.formData();
     const timestamp=Date.now();
@@ -27,16 +27,9 @@ export async function POST(request) {
         category:`${formData.get('category')}`,
         author:`${formData.get('author')}`,
         image:`${imgUrl}`,
-        authorImg:`${formData.get('authorImg')}`
+        authorImage:`${formData.get('authorImg')}`
     }
-    fetch('http://localhost:3000/api/blog', {
-        method: 'POST',
-        body: formData,
-        // No es necesario establecer Content-Type, el navegador lo hará automáticamente
-    })
-    .then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+    
     await BlogModel.create(blogData);
     console.log("Blog saved");
     return NextResponse.json({success:true,msg:"Blog Added"})
