@@ -1,5 +1,6 @@
 'use client'
 import React,{useState} from "react";
+import axios from "axios";
 import Image from "next/image";
 import { assets } from "@/Assets/assets";
 const page=()=>{
@@ -17,9 +18,20 @@ const page=()=>{
         setData(data=>({...data,[name]:value}));
         console.log(data);
     }
+    const onSubmitHandler=async(e)=>{
+        e.preventDefault();
+        const formData=new FormData();
+        formData.append('title',data.title);
+        formData.append('description',data.description);
+        formData.append('category',data.description);
+        formData.append('author',data.author);
+        formData.append('authorImg',data.authorImage);
+        formData.append('image',image);
+        const respone=await axios.post('/app/api/blog',formData);
+    }
     return(<div>
         <>
-        <form className="pt-5 px-5 sm:pt-12 sm:pl-16">
+        <form onSubmit={onSubmitHandler} className="pt-5 px-5 sm:pt-12 sm:pl-16">
             <p className="text-xl">Upload thumbnail</p>
             <label htmlFor="image">
                 <Image className='mt-4' src={!image?assets.upload_area:URL.createObjectURL(image)} width={140} height={70} alt=''/>
