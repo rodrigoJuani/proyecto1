@@ -3,6 +3,7 @@ import React,{useState} from "react";
 import axios from "axios";
 import Image from "next/image";
 import { assets } from "@/Assets/assets";
+import { toast } from "react-toastify";
 const page=()=>{
     const [image,setImage]=useState(false);
     const [data,setData]=useState({
@@ -28,6 +29,11 @@ const page=()=>{
         formData.append('authorImg',data.authorImage);
         formData.append('image',image);
         const respone=await axios.post('/app/api/blog',formData);
+        if(respone.data.success){
+            toast.success(respone.data.msg);
+        }else{
+            toast.error('Error');
+        }
     }
     return(<div>
         <>
