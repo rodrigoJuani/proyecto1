@@ -1,8 +1,11 @@
-import { blog_data } from "@/Assets/assets";
-import React,{useState} from 'react';
-import BlogItem from "./BlogItem";
+import { useState } from "react";
+
 const BlogList=()=>{
     const [menu,setMenu] = useState("ALL");
+    const[blogs,setBlogs]=useState([]);
+
+    const fetchBlogs=async()=>{ 
+    }
     return(
        <div>
         <div className="flex justify-center gap-6 my-10">
