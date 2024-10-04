@@ -13,7 +13,7 @@ const page=()=>{
         author:"Alex Bennet",
         authorImage:"/public/author_img.png"
     })
-    const onChageHandler=(event)=>{
+    const onChangeHandler=(event)=>{
         const name=event.target.name;
         const value=event.target.value;
         setData(data=>({...data,[name]:value}));
@@ -28,9 +28,9 @@ const page=()=>{
         formData.append('author',data.author);
         formData.append('authorImg',data.authorImage);
         formData.append('image',image);
-        const respone=await axios.post('/app/api/blog',formData);
-        if(respone.data.success){
-            toast.success(respone.data.msg);
+        const response=await axios.post('/app/api/blog',formData);
+        if(response.data.success){
+            toast.success(response.data.msg);
             setImage(false);
             setData({
                 title:"",
@@ -53,11 +53,11 @@ const page=()=>{
             </label>
             <input onChange={(e)=>setImage(e.target.files[0])} type="file" id='image' hidden required/>
             <p className="text-xl mt-4">Blog title</p>
-            <input name='title' onChange={onChageHandler} value={data.title} className="w-full sm:w-[500px] mt-4 px-4 py-3 border" type="text" placeholder="Type here" required/>
+            <input name='title' onChange={onChangeHandler} value={data.title} className="w-full sm:w-[500px] mt-4 px-4 py-3 border" type="text" placeholder="Type here" required/>
             <p className="text-xl mt-4">Blog Description</p>
-            <textarea name='description' onChange={onChageHandler} value={data.description} className="w-full sm:w-[500px] mt-4 px-4 py-3 border" type="text" placeholder="write content here" rows={6} required/>
+            <textarea name='description' onChange={onChangeHandler} value={data.description} className="w-full sm:w-[500px] mt-4 px-4 py-3 border" type="text" placeholder="write content here" rows={6} required/>
             <p className="text-xl mt-4">Blog category</p>
-            <select name="category" onChange={onChageHandler} value={data.category} className="w-40 mt-4 px-4 py-3 border text-gray-500">
+            <select name="category" onChange={onChangeHandler} value={data.category} className="w-40 mt-4 px-4 py-3 border text-gray-500">
                 <option value="Startup">Startup</option>
                 <option value="Technology">Technology</option>
                 <option value="Lifestyle">Lifestyle</option>

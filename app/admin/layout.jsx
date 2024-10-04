@@ -1,7 +1,7 @@
 import { assets } from "@/Assets/assets";
 import Sidebar from "@/Components/AdminComponents/Sidebar";
 import Image from "next/image";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Layout({children}){
     return(
