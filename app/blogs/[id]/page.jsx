@@ -7,15 +7,18 @@ import Link from "next/link";
 import React, { useEffect,useState } from "react";
 
 const page=({params})=>{
+
     const [data,setData]=useState(null);
-    const fetchBlogData=async()=>{
-        const response=await axios.get('/app/api/blog',{
-          params:{id:params.id
+
+    const fetchBlogData = async ()=>{
+        const response=await axios.get('/api/blog',{
+          params:{
+            id:params.id
           }
         })
         setData(response.data);
-          }
-    }
+      }
+    
     useEffect(()=>{
         fetchBlogData();
     },[])
@@ -31,12 +34,12 @@ const page=({params})=>{
             </div>
             <div className="text-center my-24">
               <h1 className="text-2xl sm:text-5xl font-semibold max-w-[700px] mx-auto">{data.title}</h1>
-              <Image className="mx-auto mt-6 border border-white rounded-full" src={data.authorImg} width={60} height={60} alt=''/>
+              <Image className="mx-auto mt-6 border border-white rounded-full" src={data.authorImage} width={60} height={60} alt=''/>
               <p className="mt-1 pb-2 text-lg max-w-[740px] mx-auto">{data.author}</p>
             </div>
         </div>
         <div className="mx-5 max-w-[800px] md:mx-auto mt-[-100px] mb-10">
-         <Image className="border-4 border-white" src={data.image} width={1280} height={720} alt=""/>
+         <Image className="border-4 border-white" src={data.authorImage} width={1280} height={720} alt=""/>
          <h1 className="my-8 text-[26px] font-semibold">Introduction:</h1>
          <p>{data.description}</p>
          <h3 className="my-5 text-[18px] font-semibold">Step 1: Self-Reflection and Goal Setting</h3>
@@ -65,6 +68,7 @@ const page=({params})=>{
         <Footer/>
         </>:<></>
     )
+  }
 
 
 export default page

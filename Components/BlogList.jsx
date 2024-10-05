@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import BlogItem from "./BlogItem";
 
 const BlogList=()=>{
     const [menu,setMenu] = useState("ALL");
     const[blogs,setBlogs]=useState([]);
 
     const fetchBlogs=async()=>{
-        const response=await axios.get('/app/api/blog');
+        const response=await axios.get('/api/blog');
         setBlogs(response.data.blogs);
         console.log(response.data.blogs);
     }

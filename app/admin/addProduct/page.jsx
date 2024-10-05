@@ -24,11 +24,11 @@ const page=()=>{
         const formData=new FormData();
         formData.append('title',data.title);
         formData.append('description',data.description);
-        formData.append('category',data.description);
+        formData.append('category',data.category);
         formData.append('author',data.author);
         formData.append('authorImg',data.authorImage);
         formData.append('image',image);
-        const response=await axios.post('/app/api/blog',formData);
+        const response=await axios.post('/api/blog',formData);
         if(response.data.success){
             toast.success(response.data.msg);
             setImage(false);
