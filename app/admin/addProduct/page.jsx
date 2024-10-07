@@ -11,7 +11,7 @@ const page=()=>{
         description:"",
         category:"Startup",
         author:"Alex Bennet",
-        authorImage:"/public/author_img.png"
+        authorImage:"/author_img.png"
     })
     const onChangeHandler=(event)=>{
         const name=event.target.name;
@@ -26,7 +26,7 @@ const page=()=>{
         formData.append('description',data.description);
         formData.append('category',data.category);
         formData.append('author',data.author);
-        formData.append('authorImg',data.authorImage);
+        formData.append('authorImage',data.authorImage);///Posible????????'authorImg'(cam->LOARRUINA)
         formData.append('image',image);
         const response=await axios.post('/api/blog',formData);
         if(response.data.success){
@@ -37,11 +37,10 @@ const page=()=>{
                 description:"",
                 category:"Startup",
                 author:"Alex Bennet",
-                authorImage:"/public/author_img.png"
+                authorImage:"/author_img.png"
             });
         }else{
             toast.error('Error');
-
         }
     }
     return(<div>
