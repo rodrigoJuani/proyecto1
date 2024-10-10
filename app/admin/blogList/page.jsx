@@ -1,4 +1,5 @@
 'use client'
+import BlogTableItem from "@/Components/AdminComponents/BlogTableItem";
 import React from "react";
 
 const page=()=>{
@@ -23,7 +24,7 @@ const page=()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <BlogTableItem/>
                 </tbody>
             </table>
         </div>
