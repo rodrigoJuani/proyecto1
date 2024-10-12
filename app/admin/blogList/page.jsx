@@ -1,14 +1,18 @@
 'use client'
 import BlogTableItem from "@/Components/AdminComponents/BlogTableItem";
 import axios from "axios";
-import React,{useState} from "react";
-import { useState } from "react/cjs/react.production.min";
+import React,{useEffect, useState} from "react";
 
 const page=()=>{
     const [blogs,setBlogs]=useState([]);
     const fetchBlogs=async()=>{
         const response=await axios.get('/api/blog');
+        setBlogs(response.data.blogs);
     }
+
+    useEffect(()=>{
+        fetchBlogs()
+    },[])
     return(<div className="flex-1 pt-5 px-5 sm:pt-12 sm:pl-16">
         <h1>ALL blogs</h1>
         <div className="relative h-[80vh] max-w-[850px] overflow-x-auto mt-4 border border-gray-400 scrollbar-hide">
@@ -30,7 +34,9 @@ const page=()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    <BlogTableItem/>
+                    {blogs.map((item,index)=>{
+                        return <BlogTableItem key={index} mongoId={item._id} title={item.title} author={item.author} authorImg={item.authorImg} date={item.date} /> 
+                    })}
                 </tbody>
             </table>
         </div>
