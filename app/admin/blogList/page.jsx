@@ -2,6 +2,7 @@
 import BlogTableItem from "@/Components/AdminComponents/BlogTableItem";
 import axios from "axios";
 import React,{useEffect, useState} from "react";
+import { toast } from "react-toastify";
 
 const page=()=>{
     const [blogs,setBlogs]=useState([]);
@@ -10,6 +11,14 @@ const page=()=>{
         setBlogs(response.data.blogs);
     }
 
+    const deleteBlog=async(mongoId)=>{
+        const response=await axios.delete('/api/blog',{
+            params:{
+                id:mongoId
+            }
+        })
+        toast.success(response.data.msg);
+    }
     useEffect(()=>{
         fetchBlogs()
     },[])
