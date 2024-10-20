@@ -1,25 +1,26 @@
-import { ConnectDB } from "@/lib/config/db"; // Asegúrate de que esta función esté correctamente definida
-import EmailModel from "@/lib/models/EmailModel";
+// pages/api/subscribe.js
+import { ConnectDB } from "@/lib/config/db"
+import BlogModel from "@/lib/models/BlogModel";
+const{ NextResponse }=require("next/server");
+import{writeFile} from 'fs/promises'
+import { title } from "process";
+
+import connectDB from "@/lib/config/db"; // Asegúrate de que la ruta sea correcta
+import EmailModel from "@/lib/models/EmailModel"; // Importa el modelo aquí
 import { NextResponse } from "next/server";
 
 // Función para cargar la base de datos
-const LoadDB = async () => {
-    try {
-        await ConnectDB();
-        console.log("Conexión a la base de datos establecida");
-    } catch (error) {
-        console.error("Error al conectar a la base de datos:", error);
-        throw new Error("No se pudo conectar a la base de datos");
-    }
+const loadDB = async () => {
+    await connectDB();
 };
 
 // Asegúrate de que la conexión se complete antes de manejar la solicitud
-await LoadDB();
+await loadDB();
 
 export async function POST(request) {
     const formData = await request.formData();
     const email = {
-        email: formData.get('email'), // No es necesario usar template literals aquí
+        email: formData.get('email'),
     };
 
     // Validación del email
@@ -28,7 +29,7 @@ export async function POST(request) {
     }
 
     try {
-        await EmailModel.create(email);
+        await EmailModel.create(email); // Usa el modelo para crear un nuevo registro
         console.log("Email guardado:", email);
         return NextResponse.json({ success: true, msg: "Email Subscribed" });
     } catch (error) {
@@ -36,4 +37,3 @@ export async function POST(request) {
         return NextResponse.json({ success: false, msg: "Error al suscribir el email" });
     }
 }
-

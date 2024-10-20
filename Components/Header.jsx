@@ -8,17 +8,22 @@ const Header=()=>{
 
     const [email,setEmail]=useState("");
     
-    const onSubmitHandler=async(e)=>{
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
-        const formData=new FormData();
-        formData.append("email",email);
-        const response=await axios.post('../app/api/email',formData);
-        if(response.data.success){
-            toast.success(response.data.msg);
-            setEmail("");
-        }
-        else{
-            toast.error("Error");
+        const formData = new FormData();
+        formData.append("email", email);
+        
+        try {
+            const response = await axios.post('C:\Users\pc\Desktop\proyect1\app\api\email\route.js', formData);
+            if (response.data.success) {
+                toast.success(response.data.msg);
+                setEmail("");
+            } else {
+                toast.error("Error");
+            }
+        } catch (error) {
+            console.error("Error en la solicitud:", error);
+            toast.error("Error en la solicitud");
         }
     }
     
