@@ -30,5 +30,6 @@ export async function POST(request) {
 }
 
 export async function GET(request) {
-    
+    const emails=await EmailModel.find({});
+    return NextResponse.json({emails});
 }

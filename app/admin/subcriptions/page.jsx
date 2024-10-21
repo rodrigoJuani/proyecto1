@@ -1,8 +1,19 @@
 'use client'
 import SubsTableItem from "@/Components/AdminComponents/SubsTableItem";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const page=()=>{
+
+
+    const [emails,setEmails]=useState([]);
+    const fetchEmails=async()=>{
+        const response= await axios.get('/api/email');
+        setEmails(response.data.emails)
+    }
+
+    useEffect(()=>{
+        fetchEmails();
+    })
     return(
     <div className="flex-1 pt-5 px-5 sm:pt-12 sm:pl-16">
         <h1>All Subscription</h1>
@@ -22,7 +33,10 @@ const page=()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    <SubsTableItem/>
+                    {emails.map((item,index)=>{
+                        return <SubsTableItem key={index} mongoId={item._id}/>;
+                    })}
+                    
                 </tbody>
             </table>
         </div>
