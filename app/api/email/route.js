@@ -30,6 +30,17 @@ export async function POST(request) {
 }
 
 export async function GET(request) {
-    const emails=await EmailModel.find({});
-    return NextResponse.json({emails});
+    try {
+        const emails = await EmailModel.find({});
+        return NextResponse.json({ emails });
+    } catch (error) {
+        console.error("Error al obtener los emails:", error);
+        return NextResponse.json({ success: false, msg: "Error al obtener los emails" });
+    }
+}
+
+export async function DELETE(request){
+    const id=await request.nextUrl.searchParams.get("id");
+    await EmailModel.findByIdAndDelete(id);
+    return NextResponse.json({success:true,msg:"Email delete"})
 }
