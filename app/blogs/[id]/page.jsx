@@ -29,7 +29,7 @@ const page=({params})=>{
               <Image src={assets.logo} width={180} alt="" className="w-[130px] sm:w-auto"/>
               </Link>
               <button className="flex items-center gap-2 font-medium py-1 px-3 sm:py-3 sm:px-6 border border-black shadow-[-7px_7px_0px_#000000]">
-                Get Started <Image src={assets.arrow} alt=""/>
+              Comenzar <Image src={assets.arrow} alt=""/>
               </button>
             </div>
             <div className="text-center my-24">
@@ -44,7 +44,7 @@ const page=({params})=>{
          <div className="blog-content" dangerouslySetInnerHTML={{__html:data.description}}></div>
          
         <div className="my-24">
-            <p className="text-black font font-semibold my-4">Share this article on social media</p>
+            <p className="text-black font font-semibold my-4">Compartir este artículo en mi redes</p>
             <div className="flex">
               <Image src={assets.facebook_icon} width={50} alt=""/>
               <Image src={assets.twitter_icon} width={50} alt=""/>
